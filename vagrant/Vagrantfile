@@ -67,10 +67,10 @@ SHELL
         end
         node.vm.hostname = "master-#{i}"
         node.vm.network :private_network, ip: IP_NW + "#{MASTER_IP_START + i}"
-        node.vm.network "forwarded_port", guest: 22, host: "#{2710 + i}"
+        node.vm.network "forwarded_port", guest: 22, host: "#{2810 + i}"
 
         node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
-          s.args = ["enp0s8"]
+          s.args = ["enp0s6"]
         end
 
         node.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
@@ -91,7 +91,7 @@ SHELL
 	node.vm.network "forwarded_port", guest: 22, host: 2730
 
     node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
-      s.args = ["enp0s8"]
+      s.args = ["enp0s6"]
     end
 
     node.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
@@ -111,7 +111,7 @@ SHELL
 		node.vm.network "forwarded_port", guest: 22, host: "#{2720 + i}"
 
         node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
-          s.args = ["enp0s8"]
+          s.args = ["enp0s6"]
         end
 
         node.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
