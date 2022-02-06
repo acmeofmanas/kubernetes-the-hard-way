@@ -24,7 +24,7 @@ rm -f /tmp/etcd-${ETCD_VER}-linux-arm64.tar.gz
    cp ca.crt etcd-server.key etcd-server.crt /etc/etcd/
 }
 
-INTERNAL_IP=$(ip addr show enp0s8 | grep "inet " | awk '{print $2}' | cut -d / -f 1)
+INTERNAL_IP=$(ip addr show enp0s6 | grep "inet " | awk '{print $2}' | cut -d / -f 1)
 
 ETCD_NAME=$(hostname -s)
 

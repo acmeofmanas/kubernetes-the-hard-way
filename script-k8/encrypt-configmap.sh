@@ -21,6 +21,6 @@ done
 
 #move to destination directory
 for instance in master-1 master-2; do
-  ssh ${instance} sudo mv encryption-config.yaml /var/lib/kubernetes/
+  ssh ${instance} mkdir -p /var/lib/kubernetes/; mv encryption-config.yaml /var/lib/kubernetes/
 done
 

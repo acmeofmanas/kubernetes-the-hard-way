@@ -21,6 +21,29 @@ LOADBALANCER_ADDRESS=192.168.5.30
 
   kubectl config use-context default --kubeconfig=kube-proxy.kubeconfig
 }
+#kube-controller
+
+
+{
+  kubectl config set-cluster kubernetes-the-hard-way \
+    --certificate-authority=ca.crt \
+    --embed-certs=true \
+    --server=https://127.0.0.1:6443 \
+    --kubeconfig=kube-controller-manager.kubeconfig
+
+  kubectl config set-credentials system:kube-controller-manager \
+    --client-certificate=kube-controller-manager.crt \
+    --client-key=kube-controller-manager.key \
+    --embed-certs=true \
+    --kubeconfig=kube-controller-manager.kubeconfig
+
+  kubectl config set-context default \
+    --cluster=kubernetes-the-hard-way \
+    --user=system:kube-controller-manager \
+    --kubeconfig=kube-controller-manager.kubeconfig
+
+  kubectl config use-context default --kubeconfig=kube-controller-manager.kubeconfig
+}
 
 #kube-scheduler
 
@@ -68,7 +91,13 @@ LOADBALANCER_ADDRESS=192.168.5.30
   kubectl config use-context default --kubeconfig=admin.kubeconfig
 }
 
-##Distribute-config
-#for instance in worker-1 worker-2; do
-#  scp kube-proxy.kubeconfig ${instance}:~/
-#done
+##Distribute-proxy
+for instance in worker-1 worker-2; do
+  scp kube-proxy.kubeconfig ${instance}:~/
+done
+
+#Distribute-controlplane
+for instance in master-1 master-2; do
+  scp admin.kubeconfig kube-controller-manager.kubeconfig kube-scheduler.kubeconfig ${instance}:~/
+done
+
