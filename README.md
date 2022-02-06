@@ -1,6 +1,6 @@
 > This tutorial is a modified version of the original developed by [Kelsey Hightower](https://github.com/kelseyhightower/kubernetes-the-hard-way).
 
-# Kubernetes The Hard Way On VirtualBox
+# Kubernetes The Hard Way On Parallel Desktop for Mac M1 Chip
 
 This tutorial walks you through setting up Kubernetes the hard way on a local machine using VirtualBox.
 This guide is not for people looking for a fully automated command to bring up a Kubernetes cluster.
