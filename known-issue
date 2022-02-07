@@ -1,0 +1,2 @@
+kube-api don't start due extra flag
+https://github.com/kelseyhightower/kubernetes-the-hard-way/issues/626
