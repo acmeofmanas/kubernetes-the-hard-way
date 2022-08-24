@@ -34,6 +34,7 @@ Description=etcd
 Documentation=https://github.com/coreos
 
 [Service]
+Environment="ETCD_UNSUPPORTED_ARCH=arm64"
 ExecStart=/usr/local/bin/etcd \\
   --name ${ETCD_NAME} \\
   --cert-file=/etc/etcd/etcd-server.crt \\
